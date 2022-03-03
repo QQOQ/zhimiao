@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link rel="stylesheet" href="./style/iconfont/iconfont.css">
+        <link rel="stylesheet" href="./style/style.css">
+        <link rel="stylesheet" href="./style/animate.min.css">
+        <title>知苗助手</title>
+    </head>
+    <body>
+        <div class="main">
+            <div class="sidebar">
+                <div class="top_sidebar">
+                    <div class="li on"><i class="iconfont icon-home"></i></div>
+                    <div class="li"><i class="iconfont icon-code"></i></div>
+                </div>
+                <div class="bottom_sidebar">
+                    <div class="li help"><i class="iconfont icon-prompt"></i></div>
+                    <div class="li setting"><i class="iconfont icon-set"></i></div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="top_content">
+                    <div class="top_content_left"></div>
+                    <div class="top_content_right"></div>
+                </div>
+                <div class="bottom_content scroll">
+                    <div class="select_area">
+                        <div class="select">
+                            <div class="select_view">
+                                <div class="select_view_l province_title">选择省份</div>
+                                <div class="select_view_r"><i class="iconfont icon-arrow-down"></i></div>
+                            </div>
+                            <div class="select_scroll scroll" id="province"></div>
+                        </div>
+                        <div class="select">
+                            <div class="select_view">
+                                <div class="select_view_l city_title">选择市</div>
+                                <div class="select_view_r"><i class="iconfont icon-arrow-down"></i></div>
+                            </div>
+                            <div class="select_scroll scroll" id="city">
+                                <div class="select_scroll_li">请先选择省份</div>
+                            </div>
+                        </div>
+                        <div class="select">
+                            <div class="select_view">
+                                <div class="select_view_l num_title">选择疫苗类型</div>
+                                <div class="select_view_r"><i class="iconfont icon-arrow-down"></i></div>
+                            </div>
+                            <div class="select_scroll scroll" id="product">
+                                <div class="select_scroll_li" data-code="1">九价</div>
+                                <div class="select_scroll_li" data-code="2">四价</div>
+                                <div class="select_scroll_li" data-code="3">二价进口</div>
+                                <div class="select_scroll_li" data-code="54">二价国产</div>
+                            </div>
+                        </div>
+                        <div class="select">
+                            <div class="select_view">
+                                <div class="select_view_l num_title">选择针次</div>
+                                <div class="select_view_r"><i class="iconfont icon-arrow-down"></i></div>
+                            </div>
+                            <div class="select_scroll scroll" id="num">
+                                <div class="select_scroll_li" data-code="1">第一针</div>
+                                <div class="select_scroll_li" data-code="2">第二针</div>
+                                <div class="select_scroll_li" data-code="3">第三针</div>
+                            </div>
+                        </div>
+                        <div class="btn strong query" id="query"><i class="iconfont icon-sousuo"></i> 查询</div>
+                    </div>
+                    <table class="table" id="hospital">
+                        <thead class="table_header">
+                            <tr>
+                                <td class="table_td" width="55">医疗机构</td>
+                                <td class="table_td" width="55">预约时间</td>
+                                <td class="table_td" width="20">价格</td>
+                                <td class="table_td" width="2">操作</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table_body">
+                            <tr class="table_tr">
+                                <td class="table_td" colspan="4" align="center">暂无数据</td>
+                            </tr>
+<!--                            <tr class="table_tr">-->
+<!--                                <td class="table_td">南宁市疾病预防控制中心（门诊部）</td>-->
+<!--                                <td class="table_td">0771-92223333</td>-->
+<!--                                <td class="table_td">南宁市星光大道223号荣宝华商城B-11-A号楼</td>-->
+<!--                                <td class="table_td"><a>详情</a></td>-->
+<!--                            </tr>-->
+                        </tbody>
+                    </table>
+                    <div class="tip">
+                        <p>* 务必点击「详情」查看每个医院的详细公告说明，选择符合要求的医院进行预约，避免预约后因条件不符造成不必要麻烦。</p>
+                    </div>
+                    <div class="start_subscribe">
+                        <div class="radio_group" data-radio="start">
+                            <div class="radio_label">开启预约</div>
+                            <div class="radio_box">
+                                <div class="radio_box_l" data-id="1">开</div>
+                                <div class="radio_box_r" data-id="0">关</div>
+                                <div class="slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscribe">
+                        <h2 class="title"><span>预约列表</span></h2>
+                        <div class="tool">
+                            <div class="btn" id="getSubcribeList">刷新</div>
+                        </div>
+                        <table class="table" id="subscribe">
+                            <thead class="table_header">
+                            <tr>
+                                <td class="table_td" width="55">医疗机构</td>
+                                <td class="table_td" width="30">预约时间</td>
+                                <td class="table_td" width="45">疫苗名称</td>
+                                <td class="table_td" width="10">状态</td>
+                                <td class="table_td" width="2">操作</td>
+                            </tr>
+                            </thead>
+                            <tbody class="table_body">
+                                <tr class="table_tr">
+                                    <td class="table_td" colspan="5" align="center">暂无数据</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="top_content">
+                    <div class="top_content_left"></div>
+                    <div class="top_content_right"><div class="close"><i class="iconfont icon-close"></i></div></div>
+                </div>
+                <div class="bottom_content">
+                    <div class="cookie_textarea inputbox">
+                        <div class="labale_input">Cookie设置</div>
+                        <div class="input">
+                            <textarea id="cookie_textarea" class="scroll" placeholder="将cookie粘贴到这里"></textarea>
+                        </div>
+                        <div class="bottom_input">
+                            <div class="btn btn_transparent mr5" id="clear">清空</div>
+                            <div class="btn" id="userinfo">保存</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal">
+                    <h2 class="title"><span>个人资料</span></h2>
+                    <input type="text" id="username" placeholder="姓名">
+                    <input type="text" id="birthday" placeholder="生日 YYYY-MM-DD">
+                    <input type="text" id="tel" placeholder="电话">
+                    <input type="text" id="idcard" placeholder="身份证号码">
+                    <div class="radio_group" data-radio="sex">
+                        <div class="radio_label">性别</div>
+                        <div class="radio_box">
+                            <div class="radio_box_l" data-id="1">男</div>
+                            <div class="radio_box_r" data-id="2">女</div>
+                            <div class="slider"></div>
+                        </div>
+                    </div>
+                    <div class="tip">* 更新资料数据会同步到知苗</div>
+                </div>
+                <div class="bottom_info">
+                    <div class="btn strong block" id="updateUserInfo">更新资料</div>
+                </div>
+            </div>
+        </div>
+        <div id="modal">
+            <div class="modal_main">
+                <div class="modal_text"></div>
+                <div class="modal_action">
+                    <div class="modal_action_btn cancel">取消</div>
+                    <div class="modal_action_btn confirm">确定</div>
+                </div>
+            </div>
+        </div>
+        <div id="popup">
+            <div class="mask"></div>
+            <div class="popup_main">
+                <div class="popup_content animate__animated animate__flipInY"></div>
+            </div>
+        </div>
+<!--        <script src="./jquery.min.js"></script>-->
+        <script src="./cities.js"></script>
+        <script src="./renderer.js"></script>
+    </body>
+</html>
